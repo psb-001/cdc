@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;800;900&display=swap");
+
+@theme {
+  --font-sans: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --color-brand: #ec3750;
+  --color-dark: #1e1e1e;
+}
+
+@layer base {
+  body {
+    @apply bg-[#f9fafc] text-gray-900 antialiased overflow-x-hidden font-sans;
+  }
+}
+
+.hero-bg {
+  background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAXM3VPwid8Vgv74P4irCs3gDfQaR13XYiH4ysjTrnzCWaE7eITAc_Vc46LKCjWRh3fpO-hv8RwJyztlpeTDu0sChrL5ZlOpALikvOeDS1D_rnXlVda6GzdQZF75wuibSpviE2AQUHzvawxjX8oJljH3tKkS0te6YhCcx2d5pEu-E6rJ8DEkGrbmgyuMfJ3Fo4h_fHzPO7bDJfFpz-pxvXi4UH13_--A1_9eb5hg6IkI1EnGeSi8det877wOp83lnDU44ZxlGUC0mM);
+  background-size: cover;
+  background-position: center;
+}
+
+.sticker-hover {
+  @apply transition-transform duration-200 ease-in-out hover:scale-105 hover:rotate-2;
+}
