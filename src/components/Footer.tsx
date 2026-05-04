@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import logo from "../assets/logo.png";
 
 export const Footer = () => (
   <footer className="bg-dark text-white py-20 px-4 border-t border-gray-800">
@@ -24,7 +25,7 @@ export const Footer = () => (
           whileHover={{ scale: 1.1, rotate: 5 }}
           alt="MES Logo" 
           className="w-16 h-16 mb-6 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer"
-          src="https://mespune.in/wp-content/uploads/2018/10/mes-logo.png" 
+          src={logo} 
         />
         <p className="text-gray-400 font-medium mb-4 text-left md:text-right leading-relaxed">
           Career Development Club<br />MES Mukunddas Lohia College of Engineering

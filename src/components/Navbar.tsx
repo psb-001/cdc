@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import logo from "../assets/logo.png";
 
 export const Navbar = () => (
   <nav className="absolute top-0 left-0 w-full z-50 p-4 md:p-6 flex justify-between items-start">
@@ -10,7 +11,7 @@ export const Navbar = () => (
       <img 
         alt="MES Logo" 
         className="w-24 md:w-32" 
-        src="https://mespune.in/wp-content/uploads/2018/10/mes-logo.png" 
+        src={logo} 
       />
     </motion.a>
     <div className="hidden md:flex space-x-6 text-white font-bold bg-black/20 px-6 py-3 rounded-full backdrop-blur-md">
