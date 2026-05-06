@@ -1,65 +1,75 @@
-import { motion } from "motion/react";
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { ArrowRight, ChevronDown, Briefcase, GraduationCap, Users } from 'lucide-react'
+import logo from '../assets/logo.png'
 
-export const Hero = () => (
-  <header className="hero-bg relative min-h-screen flex flex-col justify-center items-center text-center px-4 py-32 text-white overflow-hidden">
-    <div className="absolute inset-0 bg-black/40 z-0"></div>
-    <motion.div 
-      className="relative z-10 max-w-4xl mx-auto"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      <p className="text-xl md:text-2xl font-bold tracking-widest uppercase mb-2 text-brand bg-white inline-block px-4 py-1 rounded-sm">
-        WELCOME TO THE CAREER DEVELOPMENT CLUB. EMPOWERING MLCOE.
-      </p>
-      <h2 className="text-lg md:text-xl font-bold text-white mb-6 uppercase tracking-wider">
-        Official Tech & Career Hub of MES Mukunddas Lohia College of Engineering.
-      </h2>
-      <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight drop-shadow-lg">
-        We are <span className="bg-brand text-white px-4 py-2 rounded-lg rotate-2 inline-block shadow-xl transform hover:scale-105 transition-transform duration-200">the driven engineers</span> of MLCOE building our futures together.
-      </h1>
-      <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8">
-        <motion.a 
-          whileHover={{ scale: 1.05, y: -4 }}
-          whileTap={{ scale: 0.95 }}
-          className="bg-brand hover:bg-red-600 text-white font-bold text-xl px-8 py-4 rounded-full shadow-[0_4px_14px_0_rgba(236,55,80,0.39)] hover:shadow-[0_6px_20px_rgba(236,55,80,0.23)] transition-all" 
-          href="#"
-        >
-          Join CDC
-        </motion.a>
-        <a className="text-white hover:text-brand font-bold text-lg underline decoration-2 underline-offset-4 transition-colors" href="#">
-          Or, check out our programs →
-        </a>
-      </div>
-      <div className="mt-8 text-white bg-red-600/80 inline-block px-6 py-3 rounded-xl shadow-lg border border-red-500 font-bold backdrop-blur-sm animate-pulse">
-        NEW! Join us for the official CDC Inauguration on May 8th, 2026!
-      </div>
-    </motion.div>
+const academicTags = ['Career Readiness', 'Skill Development', 'Industry Collaboration', 'Alumni Mentorship', 'Professional Excellence']
 
-    <div className="relative z-10 mt-16 w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
-      {[
-        { title: "Peer-to-Peer Learning", desc: "Master new tech stacks and learn how to win hackathons with direct guidance from experienced peers and guest mentors from institutes like VIT Pune.", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAZc2Oox4WDgL_79vIgYe4tQwxIWP5HaQRYHV619gV_rtVOvDBSB399bel875HzEVah9Wx8rEUm9g3O_10dQiFGDtTMr5AwAPizRK3hajLzVA9CMZNe7tiAkPIc39gRturAVbEXwp4WaIKzRkQxlc20frfiQmvhVsieT0Tv4G_RJ3PZGXiGr2nsP4_zGVlknv5lGZrFSmW2x0CDdY24JfUpcAsCb0WNOdBs0yWEn2663OWGIdfPP6Jf-tKL--q3xYr5b2_3DrrvzkM" },
-        { title: "Technical Workshops", desc: "Move beyond theory. Get hands-on with AI/ML integrations, IoT hardware like ESP32s, and practical engineering projects.", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA-UQkISJ9ceI6yxmyh-Epu_LpSbQzMAUcjnqYIqOVE95GoqgL38icKRhkShVqu4wX3q2vD1P02Ygo1jLWNqX-IO5K6c6Hx2rzubPwC_QaEULXjvJ9NE1bftzOt2HD9HLmiDGbZSn14WyM4hQ3DJidvsFgFcJxztlmoH4QWdnHyvGvOpssQXZ881YWPn0lYZ53vK5v8esHlV0_lfQNkM6tfpC6egk4gtTfcZscZJpSTjI9h3rSdCdbH7JWIW5ORUGkc1Zwzlh_GFSc" },
-        { title: "Career Guidance", desc: "Backed by our dedicated faculty coordinators, we help you build standout portfolios, optimize your LinkedIn presence, and prepare for the industry.", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB062dNGTC0kRyD2FoKApc-NGBYQyORD72xbeW0sqaBik-0qYHgEsh4EwdXIWs_542CmBehm7W85zMk5_ObU3GQ-nF0KhtON498rS1FHblgQN1n58lfWISG7PT6OiG83wEkn5GREFkHf5U8y5UKJDV31XZ3kP6y-dF3350XKK5eVmQvjQFN8nIka2xOu_IxfNU5XGNcgP44WAmXGVEnoYPlBxaHm6Cna6eJmR55B--Osd8OmHAsXxyO9xxeHvEajn-S-h7TxeseQiE" }
-      ].map((card, i) => (
-        <motion.a 
-          key={i}
-          href="#"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.1 }}
-          whileHover={{ y: -8 }}
-          className="group relative bg-cover bg-center h-48 rounded-2xl overflow-hidden shadow-xl"
-          style={{ backgroundImage: `url(${card.img})` }}
-        >
-          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-          <div className="relative z-10 p-6 h-full flex flex-col justify-end">
-            <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-md">{card.title}</h3>
-            <p className="text-white/90 text-sm font-medium drop-shadow-md">{card.desc}</p>
+export default function Hero() {
+  const ref = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
+  const y = useTransform(scrollYProgress, [0, 1], [0, 100])
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
+
+  return (
+    <section id="hero" ref={ref} style={{ minHeight: '90vh', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', paddingTop: 100, background: 'linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%)' }}>
+      {/* Subtle architectural pattern */}
+      <div style={{ position: 'absolute', inset: 0, opacity: 0.03, backgroundImage: 'radial-gradient(#1E3A8A 0.5px, transparent 0.5px)', backgroundSize: '24px 24px' }} />
+
+      <motion.div style={{ y, opacity, position:'relative', zIndex:1, textAlign:'center', maxWidth:1100, padding:'0 1.5rem' }}>
+        <motion.div initial={{ opacity:0, y:-20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}>
+          <img src={logo} alt="MES MLCOE Logo" style={{ width: 100, height: 100, objectFit: 'contain', margin: '0 auto 2rem' }} />
+        </motion.div>
+
+        <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay: 0.1 }}>
+          <span className="section-label">Career Development Cell</span>
+          <div style={{ fontFamily: 'Space Grotesk', fontSize: '1rem', color: 'var(--primary)', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '1.5rem' }}>
+            MES MUKUNDDAS LOHIA COLLEGE OF ENGINEERING, PUNE
           </div>
-        </motion.a>
-      ))}
-    </div>
-  </header>
-);
+        </motion.div>
+
+        <motion.h1 initial={{ opacity:0, y:30 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.7, delay:0.2 }}
+          style={{ fontSize:'clamp(2.5rem,6vw,4rem)', marginBottom:'1.5rem', color: '#1E293B', lineHeight: 1.2 }}>
+          Preparing Students for <span style={{ color: 'var(--primary)' }}>Professional Success</span>
+        </motion.h1>
+
+        <motion.p initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.7, delay:0.3 }}
+          style={{ fontSize:'1.15rem', color:'var(--muted)', maxWidth:720, margin:'0 auto 3rem', lineHeight:1.8 }}>
+          CDC at MLCOE acts as a bridge between academic learning and industry requirements, fostering professional growth through structured training and placement support.
+        </motion.p>
+
+        <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.7, delay:0.4 }}
+          style={{ display:'flex', gap:'1rem', justifyContent:'center', flexWrap:'wrap', marginBottom:'5rem' }}>
+          <button className="btn-primary" onClick={() => document.getElementById('programs')?.scrollIntoView({behavior:'smooth'})}>
+            Explore Programs <ArrowRight size={18} />
+          </button>
+          <button className="btn-outline" onClick={() => document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})}>
+            Contact CDC
+          </button>
+        </motion.div>
+
+        {/* Quick stats row */}
+        <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.7, delay:0.5 }}
+          style={{ display:'flex', justifyContent:'center', gap:'3rem', flexWrap:'wrap' }}>
+          {[
+            { icon:<Briefcase size={22}/>, val:'200+', label:'Students Placed' },
+            { icon:<GraduationCap size={22}/>, val:'50+', label:'Workshops Held' },
+            { icon:<Users size={22}/>, val:'30+', label:'Industry Partners' },
+          ].map(s => (
+            <div key={s.label} style={{ display:'flex', flexDirection: 'column', alignItems:'center', gap:'0.5rem' }}>
+              <div style={{ width: 50, height: 50, borderRadius: '50%', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', boxShadow: '0 4px 10px rgba(0,0,0,0.05)', marginBottom: '0.5rem' }}>{s.icon}</div>
+              <div style={{ fontFamily:'Space Grotesk', fontWeight:700, fontSize:'1.5rem', color: 'var(--primary)' }}>{s.val}</div>
+              <div style={{ color:'var(--muted)', fontSize:'0.85rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{s.label}</div>
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div animate={{ y:[0,10,0] }} transition={{ duration:2, repeat:Infinity }} onClick={() => document.getElementById('about')?.scrollIntoView({behavior:'smooth'})}
+        style={{ position:'absolute', bottom:'2rem', left:'50%', transform:'translateX(-50%)', cursor:'pointer', color:'var(--muted)' }}>
+        <ChevronDown size={28} />
+      </motion.div>
+    </section>
+  )
+}

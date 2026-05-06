@@ -1,76 +1,87 @@
-import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { BookOpen, Mic, FileText, Users, Code, Building, ChevronRight } from 'lucide-react'
 
-export const Programs = () => (
-  <section className="py-24 bg-[#f3f4f6] relative">
-    <div className="max-w-4xl mx-auto px-4 text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-black mb-4">
-        Connect with <span className="bg-brand text-white px-3 py-1 rounded inline-block -rotate-2 transform">innovators</span> right here on campus
-      </h2>
-      <p className="text-xl text-gray-600 font-medium">The Career Development Club is MLCOE's premier community for hands-on learning, technical workshops, and professional networking.</p>
-    </div>
-    <div className="max-w-6xl mx-auto px-4 space-y-12">
-      {/* Flavortown */}
-      <motion.div 
-        whileHover={{ scale: 1.02, rotate: 0.5 }}
-        className="bg-[#d94a55] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-between shadow-xl"
-      >
-        <div className="md:w-1/2 relative z-10">
-          <h3 className="text-5xl font-black mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]" style={{ fontFamily: 'Georgia, serif' }}>Peer-to-Peer Learning</h3>
-          <p className="text-lg mb-8 font-medium leading-relaxed">
-            Master new tech stacks and learn how to win hackathons with direct guidance from experienced peers and guest mentors from institutes like VIT Pune.
+const programs = [
+  {
+    id: 'resume',
+    icon: <FileText size={24} />,
+    title: 'Professional Documentation',
+    desc: 'Workshops on crafting executive resumes, LinkedIn profiles, and professional portfolios that meet global standards.',
+    outcomes: ['Standardized Resumes', 'LinkedIn Optimization', 'Portfolio Review'],
+  },
+  {
+    id: 'mock',
+    icon: <Mic size={24} />,
+    title: 'Interview Preparation',
+    desc: 'Simulated interview rounds focusing on technical proficiency, behavioral traits, and communication skills.',
+    outcomes: ['Technical Mock Interviews', 'HR Round Simulation', 'GD Performance Audit'],
+  },
+  {
+    id: 'peer',
+    icon: <Users size={24} />,
+    title: 'Peer Mentoring Program',
+    desc: 'Structured knowledge transfer sessions where senior students and alumni mentor juniors on career pathways.',
+    outcomes: ['1-on-1 Guidance', 'Domain Knowledge Sharing', 'Alumni Networking'],
+  },
+  {
+    id: 'tech',
+    icon: <Code size={24} />,
+    title: 'Technical Upskilling',
+    desc: 'Coordinating with departments to provide certification courses in DSA, Cloud, AI, and emerging technologies.',
+    outcomes: ['Industry Certifications', 'Tech Stack Workshops', 'Hands-on Projects'],
+  },
+  {
+    id: 'industry',
+    icon: <Building size={24} />,
+    title: 'Industry Relations',
+    desc: 'Managing corporate tie-ups, internship drives, and guest lectures from industry veterans and entrepreneurs.',
+    outcomes: ['Internship Assistance', 'Corporate Guest Talks', 'Industrial Visits'],
+  },
+  {
+    id: 'aptitude',
+    icon: <BookOpen size={24} />,
+    title: 'Aptitude Training',
+    desc: 'Rigorous training in quantitative analysis, logical reasoning, and verbal ability for competitive campus hiring.',
+    outcomes: ['Quantitative Drills', 'Logical Reasoning', 'Verbal Excellence'],
+  },
+]
+
+export default function Programs() {
+  const [active, setActive] = useState<string | null>(null)
+
+  return (
+    <section id="programs" className="section" style={{ background: '#F8FAFC' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <span className="section-label">CDC Initiatives</span>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: '#0F172A' }}>Our Training Programs</h2>
+          <p style={{ color: 'var(--muted)', maxWidth: 600, margin: '0 auto' }}>
+            A comprehensive curriculum designed to transform students into career-ready professionals through structured training modules.
           </p>
-          <button className="bg-white text-[#d94a55] font-black py-4 px-8 rounded-full hover:bg-gray-100 transition-all shadow-lg flex items-center gap-2 group">
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            Start Cooking
-          </button>
         </div>
-        <div className="md:w-1/2 mt-8 md:mt-0 flex justify-end relative z-10">
-          <img 
-            alt="Cooking Dinosaurs" 
-            className="w-72 md:w-96 drop-shadow-2xl" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCF-MJ4PQfppkdv4sxNtDNzkCISn9JVVx6g82869uWjd50ftsIKzJQ-Yv1zvJRp-Ozdi2sGWAo1HgqWgeZloZNsbEek4mULjg2M_bMatuIsqqVVEObBapO6eqcAbnZoSgNZmPVCKodKlm09CjbwalWNrUpNTpy9ssCG7qwwtOWX7QWP1-icoKEnp5PmcWKS1Vvqzxz2oYX0kb1SYuOiM-U7xZ6qht5p3LQMQGLWAd-JnhzgfUQJj0Fjg93gaajW-YRagcGLVLaiAc" 
-          />
-        </div>
-      </motion.div>
 
-      {/* Fallout */}
-      <motion.div 
-        whileHover={{ scale: 1.02, rotate: -0.5 }}
-        className="bg-[#4fbbf1] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-between shadow-xl"
-      >
-        <div className="md:w-1/2 relative z-10">
-          <h3 className="text-5xl font-black mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] uppercase">Technical Workshops</h3>
-          <p className="text-lg mb-8 font-medium leading-relaxed">
-            Move beyond theory. Get hands-on with AI/ML integrations, IoT hardware like ESP32s, and practical engineering projects.
-          </p>
-          <button className="bg-white text-[#4fbbf1] font-black py-4 px-8 rounded-full hover:bg-gray-100 transition-all shadow-lg flex items-center gap-2 group">
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            Start Building
-          </button>
+        <div className="grid-3">
+          {programs.map((prog, i) => (
+            <div key={prog.id} className="glass-card" 
+              style={{ padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div style={{ color: 'var(--primary)', marginBottom: '1.25rem' }}>{prog.icon}</div>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.75rem', color: '#1E293B' }}>{prog.title}</h3>
+              <p style={{ color: 'var(--muted)', fontSize: '0.95rem', lineHeight: 1.6, flex: 1, marginBottom: '1.5rem' }}>{prog.desc}</p>
+              
+              <div style={{ borderTop: '1px solid var(--border)', paddingTop: '1.25rem' }}>
+                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--primary)', textTransform: 'uppercase', marginBottom: '0.75rem', letterSpacing: '0.05em' }}>Key Learning Outcomes</div>
+                {prog.outcomes.map(o => (
+                  <div key={o} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '0.4rem' }}>
+                    <ChevronRight size={14} color="var(--primary)" />
+                    {o}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="md:w-1/2 mt-8 md:mt-0 absolute inset-y-0 right-0 w-2/3 z-0 opacity-80 pointer-events-none">
-          <img 
-            alt="Clouds" 
-            className="object-cover h-full w-full object-right" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv1hFXHbPRaQTiJmXQ5xLQ5TUfeBmSWAIfGR44yGjC4IQYLTz8WVKAtPSHpClxmxxnlEy0t2_h0zSIL_ja4sSZ8XXFNC-HmVqD8o--agCk5dYPPAJrIp5RfUX1YkuSaujyg_8G0MePTDOxZss3tm9r1YrFVT3VcGhQWUp3Z4S5iLU2Kurwo4YINLlOsWRsS2-TnuUl3I58RlZlg67L4eI3_e1j9cYr8Hk45N-TQimCiJgkyKTEtCUyMFmYf75jPiKj4Z7mkepeD-Y" 
-          />
-        </div>
-      </motion.div>
-
-      {/* Stasis */}
-      <motion.div 
-        whileHover={{ scale: 1.02 }}
-        className="bg-[#e2e1d7] border-4 border-[#b53a25] rounded-xl p-8 md:p-12 text-center relative overflow-hidden shadow-xl"
-      >
-        <h3 className="text-5xl md:text-8xl font-black text-[#b53a25] tracking-widest uppercase mb-2" style={{ fontFamily: 'Impact, sans-serif' }}>Career Guidance</h3>
-        <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8 font-medium mt-4">
-          Backed by our dedicated faculty coordinators, we help you build standout portfolios, optimize your LinkedIn presence, and prepare for the industry.
-        </p>
-        <button className="bg-[#b53a25] text-white font-black py-4 px-12 text-2xl border-4 border-[#8a2919] hover:bg-[#a0301d] transition-all shadow-[6px_6px_0_0_rgba(138,41,25,1)] active:translate-x-1 active:translate-y-1 active:shadow-none uppercase">
-          RSVP
-        </button>
-      </motion.div>
-    </div>
-  </section>
-);
+      </div>
+    </section>
+  )
+}

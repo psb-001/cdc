@@ -1,24 +1,94 @@
-@import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;800;900&display=swap");
-
-@theme {
-  --font-sans: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --color-brand: #ec3750;
-  --color-dark: #1e1e1e;
+:root {
+  --bg: #FFFFFF;
+  --surface: #F8FAFC;
+  --card: #FFFFFF;
+  --border: #E2E8F0;
+  --primary: #1E3A8A; /* Navy Blue */
+  --primary-hover: #172554;
+  --accent: #B91C1C; /* Professional Maroon */
+  --text: #0F172A;
+  --muted: #475569;
+  --subtle: #F1F5F9;
+  --success: #15803D;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-@layer base {
-  body {
-    @apply bg-[#f9fafc] text-gray-900 antialiased overflow-x-hidden font-sans;
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-.hero-bg {
-  background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAXM3VPwid8Vgv74P4irCs3gDfQaR13XYiH4ysjTrnzCWaE7eITAc_Vc46LKCjWRh3fpO-hv8RwJyztlpeTDu0sChrL5ZlOpALikvOeDS1D_rnXlVda6GzdQZF75wuibSpviE2AQUHzvawxjX8oJljH3tKkS0te6YhCcx2d5pEu-E6rJ8DEkGrbmgyuMfJ3Fo4h_fHzPO7bDJfFpz-pxvXi4UH13_--A1_9eb5hg6IkI1EnGeSi8det877wOp83lnDU44ZxlGUC0mM);
-  background-size: cover;
-  background-position: center;
+h1,h2,h3,h4,h5 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--primary); line-height: 1.2; }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.section { padding: 6rem 0; }
+
+.gradient-text {
+  color: var(--primary);
 }
 
-.sticker-hover {
-  @apply transition-transform duration-200 ease-in-out hover:scale-105 hover:rotate-2;
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--primary);
+  color: white; padding: 0.85rem 2rem;
+  border-radius: 0.375rem; font-weight: 600; font-size: 0.95rem;
+  transition: all 0.2s ease;
 }
+.btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: white; color: var(--primary);
+  padding: 0.85rem 2rem; border-radius: 0.375rem;
+  font-weight: 600; font-size: 0.95rem;
+  border: 1px solid var(--primary);
+  transition: all 0.2s ease;
+}
+.btn-outline:hover { background: var(--subtle); }
+
+.glass-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.glass-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
+  background: #FEF2F2; border: 1px solid #FEE2E2;
+  padding: 0.4rem 1.25rem; border-radius: 0.5rem; margin-bottom: 1.25rem;
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+
+@media(max-width:1024px){ .grid-4{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:768px){
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}
+  .section{padding:4rem 0;}
+  h1{font-size:2.4rem !important;}
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background:var(--subtle);}
+::-webkit-scrollbar-thumb{background:var(--muted);border-radius:4px;}
+::-webkit-scrollbar-thumb:hover{background:var(--primary);}
