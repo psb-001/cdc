@@ -7,13 +7,10 @@ export const Community = () => (
       <div className="grid grid-cols-1 lg:grid-cols-2 bg-[#2c2c2c] rounded-3xl overflow-hidden shadow-2xl border border-gray-700">
         <div className="p-10 md:p-16">
           <h2 className="text-4xl font-black mb-6 flex items-center gap-3">
-            Our Online Community
+            Our Campus Network
           </h2>
           <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-            Coding doesn't have to be a solitary activity. At CDC, we make remarkable things together, and in our Slack you'll find awesome people to hang out with too. Come together, find your programming community, dream up something wild, or just #lounge.
-          </p>
-          <p className="text-gray-300 text-lg mb-8 leading-relaxed italic">
-            Occasionally we invite someone we really want to speak to (like Sal Khan, George Hotz, and Lady Ada) and host an AMA with them.
+            Whether you are from AIML, ENTC, or any other branch, the CDC is your collaborative workspace. Share ideas, troubleshoot code, borrow hardware for your next prototype, and build a network of ambitious friends.
           </p>
           <motion.button 
             whileHover={{ scale: 1.05 }}
@@ -21,7 +18,7 @@ export const Community = () => (
             className="bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-bold py-4 px-10 rounded-full shadow-lg transition-colors flex items-center gap-3"
           >
             <Slack className="w-6 h-6" />
-            Join our Slack
+            Join the WhatsApp Group
           </motion.button>
         </div>
         <div className="relative bg-black hidden lg:block">

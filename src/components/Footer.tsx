@@ -7,7 +7,7 @@ export const Footer = () => (
       <div>
         <h4 className="font-black text-gray-500 uppercase tracking-widest mb-6 text-sm">CDC</h4>
         <ul className="space-y-3 font-medium">
-          {["Philosophy", "Our Team & Board", "Jobs", "Brand Guide", "Donate"].map((link) => (
+          {["MLCOE Website", "CDC LinkedIn", "Project Showcases"].map((link) => (
             <li key={link}><a className="hover:text-brand transition-colors" href="#">{link}</a></li>
           ))}
         </ul>
@@ -15,7 +15,7 @@ export const Footer = () => (
       <div>
         <h4 className="font-black text-gray-500 uppercase tracking-widest mb-6 text-sm">Resources</h4>
         <ul className="space-y-3 font-medium">
-          {["Community Events", "Jams", "Toolbox", "Clubs Map", "Privacy & Terms"].map((link) => (
+          {["Contact Amol Sir", "Contact Ketan Sir", "Privacy & Terms"].map((link) => (
             <li key={link}><a className="hover:text-brand transition-colors" href="#">{link}</a></li>
           ))}
         </ul>

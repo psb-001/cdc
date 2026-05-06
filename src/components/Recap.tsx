@@ -11,13 +11,13 @@ export const Recap = () => (
         We've got a lot going on - let's recap
       </p>
       <h2 className="text-4xl md:text-6xl font-black mb-16">
-        Find your second home at <span className="text-brand">CDC</span>
+        Find your launchpad at <span className="text-brand">CDC</span>
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {[
-          { color: "bg-[#4fbbf1]", title: "Join Our Slack", icon: <MessageSquare className="w-8 h-8"/>, desc: "Connect with other technical teenagers on Slack and hack on things together." },
-          { color: "bg-[#8b5cf6]", title: "Open Source Tools", icon: <Cloud className="w-8 h-8"/>, desc: "We're currently building a game engine, daily streak system, graphing game, and more!" },
-          { color: "bg-brand", title: "Start A Club", icon: <Users className="w-8 h-8"/>, desc: "Build an in-person community of high school hackers, and we're here to help." }
+          { color: "bg-[#4fbbf1]", title: "Connect & Collaborate", icon: <MessageSquare className="w-8 h-8"/>, desc: "Jump into discussions on everything from aerodynamics and drone builds to algorithmic problem-solving." },
+          { color: "bg-[#8b5cf6]", title: "Hardware & Resources", icon: <Cloud className="w-8 h-8"/>, desc: "Access bulk-purchased IoT components, project materials, and technical documentation." },
+          { color: "bg-brand", title: "Campus Events", icon: <Users className="w-8 h-8"/>, desc: "Participate in exclusive hackathons, expert talks, and social awareness campaigns like our recent NSS rallies." }
         ].map((item, i) => (
           <motion.div 
             key={i}
