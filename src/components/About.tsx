@@ -29,11 +29,11 @@ export default function About() {
             
             <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap' }}>
               <div>
-                <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--primary)', marginBottom: '0.25rem' }}>200+</div>
+                <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--primary)', marginBottom: '0.25rem' }}>0</div>
                 <div style={{ color: 'var(--muted)', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase' }}>Annual Placements</div>
               </div>
               <div>
-                <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--primary)', marginBottom: '0.25rem' }}>30+</div>
+                <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--primary)', marginBottom: '0.25rem' }}>0</div>
                 <div style={{ color: 'var(--muted)', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase' }}>Corporate Partners</div>
               </div>
             </div>

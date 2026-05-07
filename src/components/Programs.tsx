@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { BookOpen, Mic, FileText, Users, Code, Building, ChevronRight } from 'lucide-react'
 
 const programs = [
@@ -48,7 +46,6 @@ const programs = [
 ]
 
 export default function Programs() {
-  const [active, setActive] = useState<string | null>(null)
 
   return (
     <section id="programs" className="section" style={{ background: '#F8FAFC' }}>
@@ -62,7 +59,7 @@ export default function Programs() {
         </div>
 
         <div className="grid-3">
-          {programs.map((prog, i) => (
+          {programs.map((prog) => (
             <div key={prog.id} className="glass-card" 
               style={{ padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%' }}>
               <div style={{ color: 'var(--primary)', marginBottom: '1.25rem' }}>{prog.icon}</div>

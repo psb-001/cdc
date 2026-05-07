@@ -37,7 +37,7 @@ export default function Navbar() {
           <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', background: 'none', cursor: 'pointer' }}>
             <img src={logo} alt="Logo" style={{ width: scrolled ? 36 : 44, height: scrolled ? 36 : 44, objectFit: 'contain', transition: 'all 0.3s' }} />
             <div style={{ textAlign: 'left' }}>
-              <div style={{ fontFamily: 'Space Grotesk', fontWeight: 800, fontSize: '1.1rem', color: 'var(--primary)', lineHeight: 1 }}>CDC</div>
+              <div style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.1rem', color: 'var(--primary)', lineHeight: 1 }}>CDC</div>
               <div style={{ fontSize: '0.65rem', color: 'var(--muted)', fontWeight: 600, letterSpacing: '0.05em' }}>MES MLCOE</div>
             </div>
           </button>

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
 
 export default function Contact() {
@@ -25,7 +24,7 @@ export default function Contact() {
               {[
                 { icon: <Mail />, title: 'Email Us', val: 'cdc@mlcoe.edu.in' },
                 { icon: <Phone />, title: 'Call Us', val: '+91 20 1234 5678' },
-                { icon: <MapPin />, title: 'Visit Us', val: 'Admin Block, Ground Floor, MES MLCOE, Pune' },
+                { icon: <MapPin />, title: 'Visit Us', val: 'Garware Campus, Karve Rd, Pune – 411004' },
               ].map(item => (
                 <div key={item.title} style={{ display: 'flex', gap: '1.25rem' }}>
                   <div style={{ width: 48, height: 48, borderRadius: '0.375rem', background: 'var(--subtle)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

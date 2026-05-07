@@ -30,8 +30,8 @@ export default function Team() {
               <div style={{ color: 'var(--muted)', fontSize: '0.8rem', marginBottom: '1.25rem' }}>{m.dept}</div>
               
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}>
-                <a href="#" style={{ color: 'var(--muted)', hover: { color: 'var(--primary)' } }}><Linkedin size={18} /></a>
-                <a href="#" style={{ color: 'var(--muted)', hover: { color: 'var(--primary)' } }}><Mail size={18} /></a>
+                <a href="#" className="social-link"><Linkedin size={18} /></a>
+                <a href="#" className="social-link"><Mail size={18} /></a>
               </div>
             </motion.div>
           ))}

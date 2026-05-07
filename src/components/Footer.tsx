@@ -16,7 +16,7 @@ export default function Footer() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.5rem' }}>
               <img src={logo} alt="Logo" style={{ width: 48, height: 48, objectFit: 'contain' }} />
               <div>
-                <div style={{ fontFamily: 'Space Grotesk', fontWeight: 800, fontSize: '1.2rem', lineHeight: 1 }}>CDC</div>
+                <div style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.2rem', lineHeight: 1 }}>CDC</div>
                 <div style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 600, letterSpacing: '0.05em' }}>MES MLCOE</div>
               </div>
             </div>
@@ -24,7 +24,7 @@ export default function Footer() {
               The official Career Development Cell of MES Mukunddas Lohia College of Engineering, Pune. Dedicated to student success and professional excellence.
             </p>
             <div style={{ fontSize: '0.8rem', color: '#94A3B8', padding: '0.75rem 1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '0.25rem', display: 'inline-block' }}>
-              📍 Wanowrie, Pune – 411001
+              📍 Garware Campus, Karve Rd, Pune – 411004
             </div>
           </div>
 

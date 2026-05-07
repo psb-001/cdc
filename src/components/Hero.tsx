@@ -1,9 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight, ChevronDown, Briefcase, GraduationCap, Users } from 'lucide-react'
+import { ArrowRight, Briefcase, GraduationCap, Users } from 'lucide-react'
 import logo from '../assets/logo.png'
-
-const academicTags = ['Career Readiness', 'Skill Development', 'Industry Collaboration', 'Alumni Mentorship', 'Professional Excellence']
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null)
@@ -22,16 +20,22 @@ export default function Hero() {
         </motion.div>
 
         <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay: 0.1 }}>
-          <span className="section-label">Career Development Cell</span>
-          <div style={{ fontFamily: 'Space Grotesk', fontSize: '1rem', color: 'var(--primary)', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '1.5rem' }}>
+          <motion.h1 initial={{ opacity:0, scale:0.95 }} animate={{ opacity:1, scale:1 }} transition={{ duration:0.7 }}
+            style={{ fontSize:'clamp(2.5rem, 8vw, 4.5rem)', fontWeight: 800, color: 'var(--primary)', marginBottom: '0.75rem', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+            Career Development Cell
+          </motion.h1>
+          <div style={{ fontFamily: 'Plus Jakarta Sans', fontSize: '1.1rem', color: 'var(--primary)', fontWeight: 800, letterSpacing: '0.1em', marginBottom: '0.75rem', textTransform: 'uppercase' }}>
             MES MUKUNDDAS LOHIA COLLEGE OF ENGINEERING, PUNE
+          </div>
+          <div style={{ fontFamily: 'Plus Jakarta Sans', fontSize: '0.95rem', color: 'var(--muted)', fontWeight: 500, letterSpacing: '0.02em', marginBottom: '3rem', opacity: 0.9, maxWidth: 800, margin: '0 auto 3rem', lineHeight: 1.5 }}>
+            S. No.1, ABASAHEB GARWARE COLLEGE, Garware Campus, C.T.S. No. 30, Plot No.28, T.P, Karve Rd, Pune, Maharashtra 411004
           </div>
         </motion.div>
 
-        <motion.h1 initial={{ opacity:0, y:30 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.7, delay:0.2 }}
-          style={{ fontSize:'clamp(2.5rem,6vw,4rem)', marginBottom:'1.5rem', color: '#1E293B', lineHeight: 1.2 }}>
-          Preparing Students for <span style={{ color: 'var(--primary)' }}>Professional Success</span>
-        </motion.h1>
+        <motion.h2 initial={{ opacity:0, y:30 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.7, delay:0.2 }}
+          style={{ fontSize:'clamp(1.25rem, 3vw, 1.75rem)', marginBottom:'2.5rem', color: '#475569', lineHeight: 1.4, fontWeight: 500, maxWidth: 800, margin: '0 auto 2.5rem' }}>
+          Preparing Students for <span style={{ color: 'var(--accent)', fontWeight: 700 }}>Professional Success</span>
+        </motion.h2>
 
         <motion.p initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.7, delay:0.3 }}
           style={{ fontSize:'1.15rem', color:'var(--muted)', maxWidth:720, margin:'0 auto 3rem', lineHeight:1.8 }}>
@@ -52,9 +56,8 @@ export default function Hero() {
         <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.7, delay:0.5 }}
           style={{ display:'flex', justifyContent:'center', gap:'3rem', flexWrap:'wrap' }}>
           {[
-            { icon:<Briefcase size={22}/>, val:'200+', label:'Students Placed' },
-            { icon:<GraduationCap size={22}/>, val:'50+', label:'Workshops Held' },
-            { icon:<Users size={22}/>, val:'30+', label:'Industry Partners' },
+            { icon:<GraduationCap size={22}/>, val:'0', label:'Workshops Held' },
+            { icon:<Users size={22}/>, val:'0', label:'Industry Partners' },
           ].map(s => (
             <div key={s.label} style={{ display:'flex', flexDirection: 'column', alignItems:'center', gap:'0.5rem' }}>
               <div style={{ width: 50, height: 50, borderRadius: '50%', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', boxShadow: '0 4px 10px rgba(0,0,0,0.05)', marginBottom: '0.5rem' }}>{s.icon}</div>
@@ -65,11 +68,7 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div animate={{ y:[0,10,0] }} transition={{ duration:2, repeat:Infinity }} onClick={() => document.getElementById('about')?.scrollIntoView({behavior:'smooth'})}
-        style={{ position:'absolute', bottom:'2rem', left:'50%', transform:'translateX(-50%)', cursor:'pointer', color:'var(--muted)' }}>
-        <ChevronDown size={28} />
-      </motion.div>
+      {/* Scroll indicator removed */}
     </section>
   )
 }

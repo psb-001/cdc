@@ -1,21 +1,20 @@
 import { motion } from 'framer-motion'
 
 const stats = [
-  { value: 200, suffix: '+', label: 'Students Placed', sublabel: 'Last Academic Year' },
-  { value: 12, suffix: ' LPA', label: 'Highest Package', sublabel: 'Offered in 2025' },
-  { value: 30, suffix: '+', label: 'Recruiters', sublabel: 'On-campus visits' },
-  { value: 95, suffix: '%', label: 'Success Rate', sublabel: 'Placement achievement' },
+  { value: 0, suffix: ' LPA', label: 'Highest Package', sublabel: 'Target for 2026' },
+  { value: 0, suffix: '+', label: 'Recruiters', sublabel: 'Partnership in progress' },
+  { value: 0, suffix: '%', label: 'Success Rate', sublabel: 'Building our track record' },
 ]
 
 export default function Stats() {
   return (
     <section className="section" style={{ background: '#0F172A', color: 'white' }}>
       <div className="container">
-        <div className="grid-4">
+        <div className="grid-3">
           {stats.map((s, i) => (
             <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
               style={{ textAlign: 'center', padding: '1rem' }}>
-              <div style={{ fontFamily: 'Space Grotesk', fontWeight: 800, fontSize: '3rem', color: '#38BDF8', marginBottom: '0.5rem', lineHeight: 1 }}>
+              <div style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '3rem', color: '#38BDF8', marginBottom: '0.5rem', lineHeight: 1 }}>
                 {s.value}{s.suffix}
               </div>
               <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.25rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{s.label}</div>
