@@ -42,7 +42,7 @@ export default function Events() {
   return (
     <section id="events" className="section" style={{ background: 'white' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '4rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '4rem' }} className="events-grid">
           {/* Left: Upcoming */}
           <div>
             <h2 style={{ fontSize: '2.25rem', marginBottom: '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>

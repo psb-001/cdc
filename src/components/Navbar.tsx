@@ -15,26 +15,35 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
+  // Close menu on resize to desktop
+  useEffect(() => {
+    const handler = () => { if (window.innerWidth > 768) setOpen(false) }
+    window.addEventListener('resize', handler)
+    return () => window.removeEventListener('resize', handler)
+  }, [])
+
   const handleNav = (section: string) => {
     setOpen(false)
     document.getElementById(section.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const navHeight = scrolled ? 64 : 80
+
   return (
     <>
-      <nav
-        style={{
-          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-          padding: '0 1.5rem',
-          background: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)',
-          backdropFilter: 'blur(10px)',
-          borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
-          transition: 'all 0.3s ease',
-        }}
-      >
-        <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: scrolled ? 64 : 80 }}>
+      <nav style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
+        padding: '0 1.5rem',
+        background: scrolled ? 'rgba(255,255,255,0.97)' : 'rgba(255,255,255,0.85)',
+        backdropFilter: 'blur(10px)',
+        borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
+        transition: 'all 0.3s ease',
+      }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: navHeight }}>
+
           {/* Logo */}
-          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', background: 'none', cursor: 'pointer' }}>
+          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', background: 'none', cursor: 'pointer' }}>
             <img src={logo} alt="Logo" style={{ width: scrolled ? 36 : 44, height: scrolled ? 36 : 44, objectFit: 'contain', transition: 'all 0.3s' }} />
             <div style={{ textAlign: 'left' }}>
               <div style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.1rem', color: 'var(--primary)', lineHeight: 1 }}>CDC</div>
@@ -43,51 +52,83 @@ export default function Navbar() {
           </button>
 
           {/* Desktop Links */}
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }} className="desktop-nav">
+          <div className="desktop-nav" style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
             {links.map(link => (
-              <button key={link} onClick={() => handleNav(link)} style={{ 
-                background: 'none', color: 'var(--text)', fontWeight: 600, fontSize: '0.875rem', 
+              <button key={link} onClick={() => handleNav(link)} style={{
+                background: 'none', color: 'var(--text)', fontWeight: 600, fontSize: '0.875rem',
                 transition: 'all 0.2s', padding: '0.5rem 1rem', borderRadius: '0.25rem'
               }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.color = 'var(--primary)';
-                  e.currentTarget.style.background = 'var(--subtle)';
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.color = 'var(--text)';
-                  e.currentTarget.style.background = 'none';
-                }}>
+                onMouseEnter={e => { e.currentTarget.style.color = 'var(--primary)'; e.currentTarget.style.background = 'var(--subtle)' }}
+                onMouseLeave={e => { e.currentTarget.style.color = 'var(--text)'; e.currentTarget.style.background = 'none' }}>
                 {link}
               </button>
             ))}
-            <button className="btn-primary" style={{ marginLeft: '1rem', padding: '0.6rem 1.5rem', fontSize: '0.85rem' }} onClick={() => handleNav('Contact')}>Join Now</button>
           </div>
 
-          {/* Mobile hamburger */}
-          <button onClick={() => setOpen(!open)} style={{ display: 'none', background: 'none', color: 'var(--text)' }} className="mobile-menu-btn">
+          {/* Hamburger */}
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setOpen(prev => !prev)}
+            aria-label="Toggle menu"
+            style={{
+              display: 'none', background: 'none', color: 'var(--text)',
+              padding: '0.5rem', borderRadius: '0.375rem', transition: 'background 0.2s'
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = 'var(--subtle)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'none'}
+          >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Drawer */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-            style={{ position: 'fixed', top: scrolled ? 64 : 80, left: 0, right: 0, zIndex: 999, background: 'white', borderBottom: '1px solid var(--border)', padding: '1.5rem' }}>
-            {links.map(link => (
-              <button key={link} onClick={() => handleNav(link)} style={{ display: 'block', width: '100%', textAlign: 'left', background: 'none', color: 'var(--text)', padding: '1rem 0', fontWeight: 600, borderBottom: '1px solid var(--subtle)' }}>{link}</button>
-            ))}
-            <button className="btn-primary" style={{ marginTop: '1.5rem', width: '100%', justifyContent: 'center' }} onClick={() => handleNav('Contact')}>Join Now</button>
-          </motion.div>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              onClick={() => setOpen(false)}
+              style={{ position: 'fixed', inset: 0, zIndex: 998, background: 'rgba(0,0,0,0.3)' }}
+            />
+            {/* Drawer */}
+            <motion.div
+              key="drawer"
+              initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              style={{
+                position: 'fixed', top: navHeight, left: 0, right: 0, zIndex: 999,
+                background: 'white', borderBottom: '1px solid var(--border)',
+                padding: '1rem 1.5rem 1.5rem', boxShadow: '0 8px 24px rgba(0,0,0,0.1)'
+              }}>
+              {links.map((link, i) => (
+                <motion.button
+                  key={link}
+                  initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}
+                  onClick={() => handleNav(link)}
+                  style={{
+                    display: 'block', width: '100%', textAlign: 'left', background: 'none',
+                    color: 'var(--text)', padding: '0.9rem 0.5rem', fontWeight: 600, fontSize: '1rem',
+                    borderBottom: i < links.length - 1 ? '1px solid var(--subtle)' : 'none',
+                    transition: 'color 0.2s'
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.color = 'var(--primary)'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'var(--text)'}
+                >
+                  {link}
+                </motion.button>
+              ))}
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 
       <style>{`
         @media(max-width:768px){
-          .desktop-nav{display:none !important;}
-          .mobile-menu-btn{display:flex !important;}
+          .desktop-nav { display: none !important; }
+          .mobile-menu-btn { display: flex !important; }
         }
       `}</style>
     </>

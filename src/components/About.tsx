@@ -13,7 +13,7 @@ export default function About() {
   return (
     <section id="about" className="section" style={{ background: 'white' }}>
       <div className="container">
-        <div className="grid-2" style={{ alignItems: 'center', gap: '5rem', marginBottom: '6rem' }}>
+        <div className="grid-2 about-grid" style={{ alignItems: 'center', gap: '5rem', marginBottom: '6rem' }}>
           {/* Left: text */}
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <div className="section-label">About the Cell</div>
@@ -26,17 +26,7 @@ export default function About() {
             <p style={{ color: 'var(--muted)', lineHeight: 1.8, marginBottom: '2.5rem', fontSize: '1.05rem' }}>
               Our mission is to ensure that every student who graduates from MLCOE is not just an engineer, but a professional ready to contribute to the global technology landscape.
             </p>
-            
-            <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap' }}>
-              <div>
-                <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--primary)', marginBottom: '0.25rem' }}>0</div>
-                <div style={{ color: 'var(--muted)', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase' }}>Annual Placements</div>
-              </div>
-              <div>
-                <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--primary)', marginBottom: '0.25rem' }}>0</div>
-                <div style={{ color: 'var(--muted)', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase' }}>Corporate Partners</div>
-              </div>
-            </div>
+
           </motion.div>
 
           {/* Right: visual */}

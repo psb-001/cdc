@@ -43,7 +43,7 @@ export default function Contact() {
           <div className="glass-card" style={{ padding: '3rem', background: 'var(--surface)', border: 'none' }}>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '2rem', color: 'var(--primary)' }}>Inquiry Form</h3>
             <form onSubmit={e => e.preventDefault()}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="form-grid-2">
                 <input type="text" placeholder="Full Name" style={inputStyle} />
                 <input type="email" placeholder="College Email" style={inputStyle} />
               </div>
