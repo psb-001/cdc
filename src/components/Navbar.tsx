@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import logo from '../assets/logo.png'
 
-const links = ['About', 'Programs', 'Events', 'Team', 'Contact']
+const links = ['About', 'Programs', 'Events', 'Leadership', 'Team', 'Contact']
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)

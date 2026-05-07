@@ -4,6 +4,7 @@ import About from './components/About'
 import Programs from './components/Programs'
 import Events from './components/Events'
 import Team from './components/Team'
+import Leadership from './components/Leadership'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -16,6 +17,7 @@ function App() {
         <About />
         <Programs />
         <Events />
+        <Leadership />
         <Team />
         <Contact />
       </main>

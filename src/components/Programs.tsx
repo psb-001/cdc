@@ -48,11 +48,11 @@ const programs = [
 export default function Programs() {
 
   return (
-    <section id="programs" className="section" style={{ background: '#F8FAFC' }}>
+    <section id="programs" className="section" style={{ background: 'var(--surface)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <span className="section-label">CDC Initiatives</span>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: '#0F172A' }}>Our Training Programs</h2>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: 'var(--text)' }}>Our Training Programs</h2>
           <p style={{ color: 'var(--muted)', maxWidth: 600, margin: '0 auto' }}>
             A comprehensive curriculum designed to transform students into career-ready professionals through structured training modules.
           </p>
@@ -63,7 +63,7 @@ export default function Programs() {
             <div key={prog.id} className="glass-card" 
               style={{ padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%' }}>
               <div style={{ color: 'var(--primary)', marginBottom: '1.25rem' }}>{prog.icon}</div>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.75rem', color: '#1E293B' }}>{prog.title}</h3>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.75rem', color: 'var(--text)' }}>{prog.title}</h3>
               <p style={{ color: 'var(--muted)', fontSize: '0.95rem', lineHeight: 1.6, flex: 1, marginBottom: '1.5rem' }}>{prog.desc}</p>
               
               <div style={{ borderTop: '1px solid var(--border)', paddingTop: '1.25rem' }}>

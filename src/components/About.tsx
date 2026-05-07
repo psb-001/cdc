@@ -17,7 +17,7 @@ export default function About() {
           {/* Left: text */}
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <div className="section-label">About the Cell</div>
-            <h2 style={{ fontSize: 'clamp(2rem,4vw,2.75rem)', marginBottom: '1.5rem', color: '#0F172A' }}>
+            <h2 style={{ fontSize: 'clamp(2rem,4vw,2.75rem)', marginBottom: '1.5rem', color: 'var(--text)' }}>
               Nurturing <span style={{ color: 'var(--primary)' }}>Academic Excellence</span> Into Professional Mastery
             </h2>
             <p style={{ color: 'var(--muted)', lineHeight: 1.8, marginBottom: '1.25rem', fontSize: '1.05rem' }}>
@@ -31,7 +31,7 @@ export default function About() {
 
           {/* Right: visual */}
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-            <div className="glass-card" style={{ padding: '3rem', background: '#F1F5F9', border: 'none' }}>
+            <div className="glass-card" style={{ padding: '3rem', background: 'var(--subtle)', border: 'none' }}>
               <img src={logo} alt="Logo" style={{ width: 80, height: 80, objectFit: 'contain', marginBottom: '2rem', opacity: 0.8 }} />
               <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--primary)' }}>Our Vision</h3>
               <p style={{ color: 'var(--muted)', fontStyle: 'italic', fontSize: '1.1rem', lineHeight: 1.7 }}>
@@ -49,7 +49,7 @@ export default function About() {
               <div style={{ width: 50, height: 50, borderRadius: '0.5rem', background: 'var(--subtle)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', marginBottom: '1.5rem' }}>
                 {p.icon}
               </div>
-              <h4 style={{ fontSize: '1.1rem', marginBottom: '0.75rem', color: '#0F172A' }}>{p.title}</h4>
+              <h4 style={{ fontSize: '1.1rem', marginBottom: '0.75rem', color: 'var(--text)' }}>{p.title}</h4>
               <p style={{ color: 'var(--muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>{p.desc}</p>
             </motion.div>
           ))}
