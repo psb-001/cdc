@@ -1,22 +1,23 @@
 import { motion } from 'framer-motion'
 import { Quote } from 'lucide-react'
+import amolImg from '../assets/amol.jpg'
 
 const leaders = [
   {
     role: 'Principal',
-    name: 'Dr. [Principal Name]',
+    name: 'Prof. Dr. Makran Jadhav',
     qualification: 'Ph.D, M.Tech',
     message:
       'The Career Development Cell is the cornerstone of our students\' professional journey. We are committed to nurturing talent and building industry-ready engineers who lead with integrity and innovation.',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop',
+    image: null,
   },
   {
     role: 'Faculty Coordinator — CDC',
-    name: 'Prof. [Coordinator Name]',
-    qualification: 'M.Tech, Department of [Dept]',
+    name: 'Prof. Amol Ingle',
+    qualification: 'Faculty Co-ordinator, CDC',
     message:
       'Our mission at CDC is to empower every student with the skills, confidence, and connections they need to thrive in their careers. We bridge the gap between classroom learning and real-world excellence.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop',
+    image: amolImg,
   },
 ]
 
@@ -83,11 +84,22 @@ export default function Leadership() {
                   boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
                   marginBottom: '-1px',
                 }}>
-                  <img
-                    src={l.image}
-                    alt={l.name}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
+                  {l.image ? (
+                    <img
+                      src={l.image}
+                      alt={l.name}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <div style={{
+                      width: '100%', height: '100%',
+                      background: 'rgba(255,255,255,0.15)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: '2.5rem', color: 'white', fontWeight: 700,
+                    }}>
+                      {l.name.charAt(0)}
+                    </div>
+                  )}
                 </div>
 
                 {/* Name + role on banner */}
